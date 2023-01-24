@@ -11,6 +11,8 @@ import { ModifierFileComponent } from '../modifier-file/modifier-file.component'
 import { HomeComponentComponent } from '../home-component/home-component.component';
 import { NonAuthetifieComponent } from '../non-authetifie/non-authetifie.component';
 import { AjoutEchoueComponent } from '../ajout-echoue/ajout-echoue.component';
+import { InterfaceClientComponent } from '../interface-client/interface-client.component';
+import { InterfaceClient2Component } from '../interface-client2/interface-client2.component';
 
 
 export const appRouteList: Routes = [
@@ -49,6 +51,14 @@ export const appRouteList: Routes = [
   {
     path: 'non-authentifie',
     component: NonAuthetifieComponent
+  },
+  {
+    path: 'client',
+    component: InterfaceClientComponent
+  },
+  {
+    path: 'client2',
+    component: InterfaceClient2Component
   },
   {
       path: '**',

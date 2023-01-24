@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NonAuthetifieComponent } from './non-authetifie/non-authetifie.component';
 import { AjoutEchoueComponent } from './ajout-echoue/ajout-echoue.component';
+import { InterfaceClientComponent } from './interface-client/interface-client.component';
+import { InterfaceClient2Component } from './interface-client2/interface-client2.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AjoutEchoueComponent } from './ajout-echoue/ajout-echoue.component';
     InterfaceGuichetComponent,
     NavbarComponent,
     NonAuthetifieComponent,
-    AjoutEchoueComponent
+    AjoutEchoueComponent,
+    InterfaceClientComponent,
+    InterfaceClient2Component
   ],
   imports: [
     BrowserModule,

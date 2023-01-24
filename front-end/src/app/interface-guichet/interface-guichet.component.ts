@@ -11,7 +11,7 @@ export class InterfaceGuichetComponent {
 
   constructor(private myService : ApiServiceService,private route : ActivatedRoute, private router:Router){}
 
-  idLocal!:string; numGuichet!:string;etatFile=7;
+  idLocal!:string; numGuichet!:string; numFile!:number;
 
 
   ngOnInit(): void {
@@ -29,13 +29,18 @@ export class InterfaceGuichetComponent {
       this.router.navigateByUrl(`admin-non-authentifie`)
     }*/
 
+    
+
      this.idLocal =  this.route.snapshot.paramMap.get('idLocal')! ;
      this.numGuichet =  this.route.snapshot.paramMap.get('numGuichet')! ;
+
+    //**********celle ciii */ this.myService.getEtatFile(this.idLocal).subscribe((etatFile)=>{this.numFile=etatFile.numFile;this.numGuichet=etatFile.numGuichet})
      console.log(this.numGuichet)
   }
 
   onClickSubmit(){
-    this.myService.updateEtatFile(this.idLocal,+this.numGuichet).subscribe((etatFile)=>{this.etatFile=+etatFile})
+    //à revoir avec Imen chnoua yraja3lek fel update ..
+    this.myService.updateEtatFile(this.idLocal,+this.numGuichet).subscribe((etatFile)=>{this.numFile=+etatFile})
   }
 
   

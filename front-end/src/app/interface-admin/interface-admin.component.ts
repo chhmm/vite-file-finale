@@ -38,10 +38,12 @@ let token =  this.route.snapshot.paramMap.get('token') ;
       this.myService.getAccount(email,mdp).subscribe((returnedAccount)=>{this.account = returnedAccount;},
                                                                         (error)=>console.log(error));
       this.account = await firstValueFrom(this.myService.getAccount(email,mdp).pipe(timeout(10000)));
+      
       /* this.myService.getFiles(this.account.id).subscribe((fileList)=>{this.fileList = fileList;},
                                                                         (error)=>console.log(error));
       this.fileList = await firstValueFrom(this.myService.getFiles(this.account.id).pipe(timeout(10000)));      */                             
       console.log(this.account.name);
+
       console.log(this.account);
       console.log(this.fileList);
       

@@ -5,6 +5,7 @@ import { authAdminModel } from './connect-admin/auth-admin.model';
 import { fileModel} from './ajouter-file/file.model';
 import { Route, Router } from '@angular/router';
 import { authGuichetModel } from './connect-guichet/auth-guichet.model';
+import { etatFileModel } from './ajouter-file/etatFile.model';
 
 @Injectable({
   providedIn: 'root'
@@ -64,6 +65,10 @@ export class ApiServiceService {
 
   public updateEtatFile(idFile:string, numGuichet:number){
     return this.httpClient.post(`${this.API_SERVER}/files/`,{"guichet":numGuichet,"idFile":idFile});
+  }
+
+  public getEtatFile(idFile:string){
+    return this.httpClient.get<etatFileModel>(`${this.API_SERVER}/files/${idFile}`);
   }
 
 

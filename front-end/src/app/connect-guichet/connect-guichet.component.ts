@@ -13,10 +13,10 @@ export class ConnectGuichetComponent {
   constructor(private myService : ApiServiceService, private router:Router){}
 
   auth = new authGuichetModel();
-
+  numFile !: number;
+  numGuichet !: string;
   onClickSubmit(){
-    /*this.myService.authGuichet(this.auth).subscribe((authSucceed)=>{this.router.navigateByUrl(`/app-interface-guichet/${this.auth.idLocal}/${this.auth.numGuichet}`);},
-                      (error)=>{this.router.navigateByUrl(`non-authentifie`)});*/
+   
     this.router.navigateByUrl(`/interface-guichet/${this.auth.idLocal}/${this.auth.numGuichet}`);
     
   }
