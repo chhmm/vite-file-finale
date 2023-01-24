@@ -11,7 +11,10 @@ export class InterfaceGuichetComponent {
 
   constructor(private myService : ApiServiceService,private route : ActivatedRoute, private router:Router){}
 
-  idLocal!:string; numGuichet!:string; numFile!:number;
+  idLocal!:string; 
+  monGuichet!:string;
+  guichetActuel!:string; 
+  numFile!:number;
 
 
   ngOnInit(): void {
@@ -32,15 +35,17 @@ export class InterfaceGuichetComponent {
     
 
      this.idLocal =  this.route.snapshot.paramMap.get('idLocal')! ;
-     this.numGuichet =  this.route.snapshot.paramMap.get('numGuichet')! ;
-
-    //**********celle ciii */ this.myService.getEtatFile(this.idLocal).subscribe((etatFile)=>{this.numFile=etatFile.numFile;this.numGuichet=etatFile.numGuichet})
-     console.log(this.numGuichet)
+     this.monGuichet =  this.route.snapshot.paramMap.get('numGuichet')! ;
+     console.log(this.idLocal)
+     this.myService.getEtatFile(this.idLocal).subscribe((etatFile)=>{this.numFile=etatFile.numerofile;this.guichetActuel=etatFile.guichet})
+     console.log(this.guichetActuel)
+     console.log(this.idLocal)
   }
 
   onClickSubmit(){
-    //à revoir avec Imen chnoua yraja3lek fel update ..
-    this.myService.updateEtatFile(this.idLocal,+this.numGuichet).subscribe((etatFile)=>{this.numFile=+etatFile})
+    this.myService.updateEtatFile(this.idLocal,this.monGuichet).subscribe((etatFile)=>{this.numFile=etatFile.numerofile;
+                                                                                          this.guichetActuel=etatFile.guichet;
+                                                                                          console.log(this.numFile, this.guichetActuel)})
   }
 
   

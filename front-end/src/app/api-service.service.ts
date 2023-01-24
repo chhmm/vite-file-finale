@@ -48,27 +48,37 @@ export class ApiServiceService {
   }
 
   public getFiles(accountID : string){
-    return this.httpClient.get<fileModel[]>(`${this.API_SERVER}/files/${+accountID}`);
+    console.log(accountID)
+    return this.httpClient.get<any[]>(`${this.API_SERVER}/files/${accountID}`);
   }
 
   public addFile(file : fileModel){
-    return this.httpClient.post<fileModel>(`${this.API_SERVER}/files/`,file);
+    return  this.httpClient.post<any>(`${this.API_SERVER}/files/add-file/`,{"Id":file.idService,
+                                                                                "Adress":file.adresseFile});
+
+
   }
 
   public updateFile(file : fileModel){
-    return this.httpClient.patch<fileModel>(`${this.API_SERVER}/files/`,file);
+    return this.httpClient.patch<fileModel>(`${this.API_SERVER}/files/update`,{"Id":file.idFile,
+                                                                                "Adress":file.adresseFile});
   }
 
   public  getAccount(email:string, mdp:string){
     return this.httpClient.get<accountModel>(`${this.API_SERVER}/compte/${email}/${mdp}`);
   }
 
-  public updateEtatFile(idFile:string, numGuichet:number){
-    return this.httpClient.post(`${this.API_SERVER}/files/`,{"guichet":numGuichet,"idFile":idFile});
+  public updateEtatFile(idFile:string, numGuichet:string){
+    return this.httpClient.patch<any>(`${this.API_SERVER}/files/guichet-update/`,{"Id":idFile, "guichet":numGuichet});
   }
 
   public getEtatFile(idFile:string){
-    return this.httpClient.get<etatFileModel>(`${this.API_SERVER}/files/${idFile}`);
+    console.log("entrée")
+    return this.httpClient.get<any>(`${this.API_SERVER}/files/guichet/${encodeURIComponent(idFile)}`);
+  }
+
+  public getServices(){
+    return this.httpClient.get<any[]>(`${this.API_SERVER}/compte`);
   }
 
 

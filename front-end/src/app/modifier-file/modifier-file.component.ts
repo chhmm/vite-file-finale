@@ -15,7 +15,7 @@ export class ModifierFileComponent {
 
   onClickSubmit(){
     console.log(this.file);
-    this.myService.updateFile(this.file);
+    this.myService.updateFile(this.file).subscribe((success)=>console.log(success),(error)=>console.log(error));
   }
 
 }

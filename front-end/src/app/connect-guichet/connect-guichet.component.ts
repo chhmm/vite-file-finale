@@ -17,7 +17,7 @@ export class ConnectGuichetComponent {
   numGuichet !: string;
   onClickSubmit(){
    
-    this.router.navigateByUrl(`/interface-guichet/${this.auth.idLocal}/${this.auth.numGuichet}`);
+    this.router.navigateByUrl(`/interface-guichet/${encodeURIComponent(this.auth.idLocal)}/${this.auth.numGuichet}`);
     
   }
 

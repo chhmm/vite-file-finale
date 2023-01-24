@@ -14,8 +14,7 @@ export class AjouterFileComponent {
   file = new fileModel()
 
   onClickSubmit(){
-    console.log(this.file);
-    this.myService.addFile(this.file);
+    this.myService.addFile(this.file).subscribe((success)=>console.log(success),(error)=>console.log(error))
   }
   
 

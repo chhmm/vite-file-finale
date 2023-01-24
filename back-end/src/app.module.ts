@@ -3,10 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CompteModule } from './compte/compte.module';
+import { FileModule } from './file/file.module';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [CompteModule, UserModule, TypeOrmModule.forRoot({
+  imports: [FileModule, CompteModule, UserModule, TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -14,7 +15,7 @@ import { UserModule } from './user/user.module';
     password: '',
     database: 'compte',
     autoLoadEntities: true,
-    synchronize: true
+    synchronize: false
   })],
   controllers: [AppController],
   providers: [AppService],

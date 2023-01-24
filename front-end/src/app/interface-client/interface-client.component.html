@@ -34,22 +34,17 @@
               <div class="container mt-3">
                 <h3 style="color: whitesmoke; font-weight: 800;">Identifier votre file</h3><br>
                 <p>Veuillez choisir votre service parmi les services inscrit ci-dessous :</p>
-                <form action="/action_page.php">
-                  <select class="form-select" id="sel1" [(ngModel)]="nomService" name="sellist1" >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                <form>
+                  <select class="form-select" id="sel1" (ngModelChange)="onChange($event)" [(ngModel)]=serviceChoisi name="sellist1">
+                    <option *ngFor = "let service of serviceList" (value)="service.compagny">{{service.compagny}}</option>
                   </select>
                   <br><br>
-                  
-                  <p *ngIf ="idService">Choisissons le local de ce service :</p>
-                  <select class="form-select" id="sel1"  name="sellist1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
+                  <div *ngIf ="serviceChoisi" >
+                  <p>Choisissons le local de ce service :</p>
+                  <select class="form-select" id="sel1"  name="sellist1" >
+                    <option *ngFor = "let service of serviceList">{{service.compagny}}</option>
                   </select>
+                </div>
                   <br><br>
 
                   <button type="button" class="btn btn-primary btn-lg" style="background-color: palevioletred">Large button</button>
